@@ -21,6 +21,8 @@ class SSEHandle {
         const sse = new SSE([], undefined);
         this.app.get(url.pathname, sse.init);
         route.continue({url: `${this.serverUrl}${url.pathname}`});
+        // Possible workaround is this:
+        // route.continue({headers: route.request().headers(), url: `${this.serverUrl}${url.pathname}`});
         this.sse = sse;
         return sse;
     }
